@@ -72,6 +72,70 @@ header .presentation::before {
   color: #fff;
 }
 
+main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+main .item {
+  width: 30%;
+  margin-bottom: 50px;
+  transition: transform 300ms ease;
+}
+
+main .item:hover {
+  transform: scale(1.02);
+}
+
+main .item .item-descr {
+  background: #f4f3f3;
+  transform: translateY(-4px);
+  padding-top: 4px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+main .item img {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 0;
+}
+
+main h2, main p, main b {
+  margin: 5px 20px 5px 20px;
+  color: #333;
+}
+
+main p {
+  margin-bottom: 10px;
+}
+
+main b {
+  color: #5fa36a;
+}
+
+main .add-to-card {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  background: #ca5252;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 300ms ease;
+}
+
+main .add-to-card:hover {
+  transform: scale(1.2) translateY(-1px);
+}
+
 footer {
   margin-top: 100px;
   text-align: center;
