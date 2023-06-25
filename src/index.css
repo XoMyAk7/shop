@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
 
 * {
   margin: 0;
@@ -8,8 +8,8 @@
 body {
   background: #fff;
   color: #222;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
 }
 
 .wrapper {
@@ -17,7 +17,151 @@ body {
   margin: 50px auto;
 }
 
+header {
+  position: relative;
+}
+
 header .logo {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+header .shop-cart-button {
+  float: right;
+  cursor: pointer;
+  transition: color 300ms ease;
+  user-select: none;
+}
+
+header .shop-cart-button:hover,
+header .shop-cart-button.active {
+  color: #dc3d3d;
+}
+
+header .shop-cart {
+  padding: 0 10px;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  width: 430px;
+  background: #efeded;
+  border-radius: 7px;
+  z-index: 1000;
+  -webkit-box-shadow: 6px 4px 11px 6px rgba(34, 60, 80, 0.15);
+  -moz-box-shadow: 6px 4px 11px 6px rgba(34, 60, 80, 0.15);
+  box-shadow: 6px 4px 11px 6px rgba(34, 60, 80, 0.15);
+}
+
+header .shop-cart .empty h2 {
+  padding: 10px;
+  font-size: 20px;
+}
+
+header .shop-cart .orders-reset {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+  margin-top: 7px;
+}
+
+header .shop-cart .orders-reset .orders-reset-descr {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+header .shop-cart .orders-reset-btn {
+  border: none;
+  font-weight: 400;
+  font-size: 17px;
+  cursor: pointer;
+  transition: color 300ms ease;
+}
+
+header .shop-cart .orders-reset-btn:hover {
+  color: red;
+}
+
+header .order-item {
+  background: #eee3e3;
+  padding: 8px;
+  border-radius: 10px;
+  margin: 11px 0 0 0;
+}
+
+header .order-item:last-child {
+  margin-bottom: 0;
+}
+
+header .order-item .order-item__info {
+  display: flex;
+}
+
+header .order-item .order-item__info img {
+  width: 18%;
+}
+
+header .order-item .order-item__info .order-descr {
+  margin-top: 6px;
+  margin-left: 10px;
+}
+
+header .order-item .order-item__info .order-descr h2 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+header .order-item .order-item__info .order-descr b {
+  color: #727272;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+header .order-item .delete-icon {
+  position: relative;
+  float: right;
+  top: -47px;
+  right: 10px;
+  color: #ca5252;
+  cursor: pointer;
+  transition: color, transform 500ms ease;
+  user-select: none;
+}
+
+header .order-item .delete-icon:hover {
+  color: #d83030;
+  transform: scale(1.5);
+}
+
+header .orders-more {
+  margin: 15px 15px 10px 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+header .shop-cart .orders-more__buy {
+  border: 1px solid black;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  position: relative;
+  top: -3px;
+}
+
+header .shop-cart .orders-more__buy {
+  width: 100px;
+}
+
+header .shop-cart .orders-more__buy:hover {
+  background-color: #e9e7e7;
+}
+
+header .shop-cart .orders-more .sum {
+  margin-left: 8px;
+  float: left;
   font-weight: 600;
   font-size: 20px;
 }
@@ -25,6 +169,7 @@ header .logo {
 header ul.nav {
   float: right;
   list-style: none;
+  user-select: none;
 }
 
 header ul.nav li {
@@ -40,7 +185,7 @@ header ul.nav li:hover {
 
 header .presentation {
   margin: 50px 0;
-  background: url('./img/bg.jpg') no-repeat;
+  background: url("./img/bg.jpg") no-repeat;
   width: 100%;
   height: 500px;
   background-size: cover;
@@ -51,7 +196,7 @@ header .presentation {
 }
 
 header .presentation::after {
-  content: 'Лучшие товары для вашего дома';
+  content: "Лучшие товары для вашего дома";
   position: absolute;
   top: 100px;
   left: 67px;
@@ -62,14 +207,32 @@ header .presentation::after {
 }
 
 header .presentation::before {
-  content: 'по низким ценам';
+  content: "по низким ценам";
   position: absolute;
   top: 250px;
   left: 67px;
   width: 300px;
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
   color: #fff;
+}
+
+.categories div {
+  display: inline-block;
+  background: #f2f2f2;
+  border-radius: 50px;
+  padding: 10px 20px;
+  margin-bottom: 25px;
+  margin-right: 15px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 500ms ease;
+  user-select: none;
+}
+
+.categories div:hover {
+  border-color: silver;
+  transform: scale(1.1);
 }
 
 main {
@@ -103,7 +266,9 @@ main .item img {
   margin-bottom: 0;
 }
 
-main h2, main p, main b {
+main h2,
+main p,
+main b {
   margin: 5px 20px 5px 20px;
   color: #333;
 }
@@ -116,7 +281,7 @@ main b {
   color: #5fa36a;
 }
 
-main .add-to-card {
+main .add-to-cart {
   position: absolute;
   right: 15px;
   bottom: 15px;
@@ -130,9 +295,10 @@ main .add-to-card {
   cursor: pointer;
   font-weight: 600;
   transition: transform 300ms ease;
+  user-select: none;
 }
 
-main .add-to-card:hover {
+main .add-to-cart:hover {
   transform: scale(1.2) translateY(-1px);
 }
 

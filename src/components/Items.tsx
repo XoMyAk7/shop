@@ -1,25 +1,27 @@
-import { FC } from 'react'
-import Item from './Item';
+import { FC } from "react";
+import Item from "./Item";
 
+type TItem = {
+  id: number;
+  title: string;
+  img: string;
+  desc: string;
+  category: string;
+  price: string;
+}
 interface IItems {
-  items: {
-    id: number;
-    title: string;
-    img: string;
-    desc: string;
-    category: string;
-    price: string;
-  }[]
+  items: TItem[];
+  onAdd(el: TItem): void;
 }
 
-const Items: FC<IItems> = ({items}) => {
+const Items: FC<IItems> = ({ items, onAdd }) => {
   return (
     <main>
-      {items.map(el => 
-        <Item key={el.id} item={el} />
-      )}
+      {items.map(el => (
+        <Item key={el.id} item={el} onAdd={onAdd} />
+      ))}
     </main>
-    )
-}
+  );
+};
 
-export default Items
+export default Items;
