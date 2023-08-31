@@ -1,6 +1,9 @@
 import { FC, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import Order from "./Order";
+import { useCounter } from "../hooks/useCounter";
+import { useActions } from "../hooks/useActions";
+import { ActionCreatorWithoutPayload } from "@reduxjs/toolkit";
 
 type TItem = {
   id: number;
@@ -25,7 +28,8 @@ type onResetFunc = {
 const showOrders = (
   orders: TItem[],
   onRemove: onRemoveFunc,
-  onReset: onResetFunc
+  onReset: onResetFunc,
+  clearShopCart: ActionCreatorWithoutPayload,
 ) => {
   let sum = 0;
   orders.forEach(item => (sum += Number.parseFloat(item.price)));
@@ -34,7 +38,7 @@ const showOrders = (
     <div>
       <div className="orders-reset">
         <div className="orders-reset-descr">Товары в корзине</div>
-        <button onClick={() => onReset()} className="orders-reset-btn">
+        <button onClick={() => {onReset(); clearShopCart()}} className="orders-reset-btn">
           Очистить корзину
         </button>
       </div>
@@ -58,7 +62,9 @@ const showNothing = () => {
 };
 
 const Header: FC<IHeader> = ({ orders, onRemove, onReset }) => {
-  let [cartOpen, setCartOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+  const counter = useCounter();
+  const {clearShopCart} = useActions();
 
   return (
     <header>
@@ -69,15 +75,18 @@ const Header: FC<IHeader> = ({ orders, onRemove, onReset }) => {
           <li>Контакты</li>
           <li>Кабинет</li>
         </ul>
-        <FaShoppingCart
-          onClick={() => setCartOpen((cartOpen = !cartOpen))}
+        <div
           className={`shop-cart-button ${cartOpen && "active"}`}
-        />
+          onClick={() => setCartOpen(!cartOpen)}
+        >
+          <FaShoppingCart />
+          <div className="counter">{counter}</div>
+        </div>
 
         {cartOpen && (
           <div className="shop-cart">
             {orders.length > 0
-              ? showOrders(orders, onRemove, onReset)
+              ? showOrders(orders, onRemove, onReset, clearShopCart)
               : showNothing()}
           </div>
         )}

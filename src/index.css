@@ -26,16 +26,30 @@ header .logo {
   font-size: 20px;
 }
 
-header .shop-cart-button {
-  float: right;
+header div .shop-cart-button {
+  position: absolute;
+  right: 284px;
+  top: 0;
   cursor: pointer;
   transition: color 300ms ease;
   user-select: none;
 }
 
-header .shop-cart-button:hover,
-header .shop-cart-button.active {
+header div .shop-cart-button:hover,
+header div .shop-cart-button.active {
   color: #dc3d3d;
+}
+
+header div .counter {
+  position: absolute;
+  right: -5px;
+  top: -7px;
+  font-size: 12px;
+  text-align: center;
+  width: 15px;
+  background-color: wheat;
+  border-radius: 50%;
+  user-select: none;
 }
 
 header .shop-cart {

@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useActions } from "../hooks/useActions";
 
 type TItem = {
   id: number;
@@ -14,6 +15,8 @@ interface IItem {
 }
 
 const Item: FC<IItem> = ({ item, onAdd }) => {
+  const { increment } = useActions();
+
   return (
     <div className="item">
       <img src={"./img/" + item.img} alt={"item.title"} />
@@ -21,7 +24,13 @@ const Item: FC<IItem> = ({ item, onAdd }) => {
         <h2>{item.title}</h2>
         <p>{item.desc}</p>
         <b>{item.price}₽</b>
-        <div className="add-to-cart" onClick={() => onAdd(item)}>
+        <div
+          className="add-to-cart"
+          onClick={() => {
+            onAdd(item);
+            increment();
+          }}
+        >
           +
         </div>
       </div>

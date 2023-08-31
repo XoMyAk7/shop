@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { FaTrash } from "react-icons/fa"
+import { useActions } from "../hooks/useActions";
 
 interface IOrder {
   item: {
@@ -14,6 +15,8 @@ interface IOrder {
 }
 
 const Order: FC<IOrder> = ({ item, onRemove }) => {
+  const {decrement} = useActions();
+
   return (
     <div className="order-item">
       <div className="order-item__info">
@@ -23,7 +26,7 @@ const Order: FC<IOrder> = ({ item, onRemove }) => {
           <b>{item.price} ₽/шт</b>
         </div>
       </div>
-      <FaTrash onClick={() => onRemove(item.id)} className="delete-icon" />
+      <FaTrash onClick={() => {onRemove(item.id); decrement()}} className="delete-icon" />
     </div>
   );
 };
